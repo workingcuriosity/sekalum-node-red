@@ -1,0 +1,57 @@
+<script type="text/html" data-template-name="sekalum">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-sekalumConfig"><i class="fa fa-plug"></i> Connection</label>
+    <input type="text" id="node-input-sekalumConfig">
+  </div>
+  <div class="form-row">
+    <label for="node-input-operation"><i class="fa fa-cog"></i> Operation</label>
+    <select id="node-input-operation">
+      <option value="discover">Discover</option>
+      <option value="resolve">Resolve</option>
+    </select>
+  </div>
+  <div class="form-row sekalum-discover-field">
+    <label for="node-input-providerFilter"><i class="fa fa-filter"></i> Provider filter</label>
+    <input type="text" id="node-input-providerFilter" placeholder="Optional provider filter">
+  </div>
+  <div class="form-row sekalum-resolve-field">
+    <label for="node-input-credentialKey"><i class="fa fa-key"></i> Credential key</label>
+    <input type="text" id="node-input-credentialKey" placeholder="Opaque credentialKey">
+  </div>
+  <div class="form-row sekalum-resolve-field">
+    <label for="node-input-secretNames"><i class="fa fa-list"></i> Secret field names</label>
+    <input type="text" id="node-input-secretNames" placeholder="name, region">
+  </div>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('sekalum', {
+    category: 'function',
+    color: '#d7e7f7',
+    defaults: {
+      name: { value: '' },
+      sekalumConfig: { value: '', type: 'sekalum-config', required: true },
+      operation: { value: 'discover', required: true },
+      providerFilter: { value: '' },
+      credentialKey: { value: '' },
+      secretNames: { value: '' }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'sekalum-icon.png',
+    label: function () { return this.name || 'Sekalum'; },
+    oneditprepare: function () {
+      function toggleFields () {
+        var resolve = $('#node-input-operation').val() === 'resolve';
+        $('.sekalum-discover-field').toggle(!resolve);
+        $('.sekalum-resolve-field').toggle(resolve);
+      }
+      $('#node-input-operation').on('change', toggleFields);
+      toggleFields();
+    }
+  });
+</script>

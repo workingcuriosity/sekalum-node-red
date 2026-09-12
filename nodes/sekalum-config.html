@@ -1,0 +1,28 @@
+<script type="text/html" data-template-name="sekalum-config">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-config-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-baseUrl"><i class="fa fa-globe"></i> Base URL</label>
+    <input type="text" id="node-config-input-baseUrl" placeholder="https://sekalum.example">
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-token"><i class="fa fa-lock"></i> Consumer API token</label>
+    <input type="password" id="node-config-input-token" autocomplete="new-password">
+  </div>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('sekalum-config', {
+    category: 'config',
+    defaults: {
+      name: { value: '' },
+      baseUrl: { value: '', required: true }
+    },
+    credentials: {
+      token: { type: 'password', required: true }
+    },
+    label: function () { return this.name || this.baseUrl || 'Sekalum connection'; }
+  });
+</script>
