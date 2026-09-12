@@ -1,0 +1,59 @@
+{
+  "name": "@workingcuriosity/node-red-sekalum",
+  "version": "0.1.0",
+  "description": "Node-RED nodes for the Sekalum Consumer API",
+  "main": "nodes/sekalum.js",
+  "license": "MIT",
+  "author": {
+    "name": "Working Curiosity",
+    "email": "luiscyphre404@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/workingcuriosity/sekalum-node-red.git"
+  },
+  "homepage": "https://github.com/workingcuriosity/sekalum-node-red",
+  "bugs": {
+    "url": "https://github.com/workingcuriosity/sekalum-node-red/issues"
+  },
+  "keywords": [
+    "node-red",
+    "node-red-contrib",
+    "sekalum",
+    "credentials",
+    "integration"
+  ],
+  "engines": {
+    "node": ">=24.0.0 <25.0.0"
+  },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/*.spec.js test/*_spec.js",
+    "test:unit": "node --test --test-concurrency=1 test/unit.spec.js",
+    "test:integration": "node --test --test-concurrency=1 test/integration.spec.js",
+    "test:security": "node --test --test-concurrency=1 test/security_spec.js",
+    "pack:check": "npm pack --dry-run"
+  },
+  "node-red": {
+    "version": ">=5.0.0 <6.0.0",
+    "nodes": {
+      "sekalum": "nodes/sekalum.js",
+      "sekalum-config": "nodes/sekalum-config.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "nodes",
+    "lib",
+    "examples",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "node-red": "5.0.7",
+    "node-red-node-test-helper": "0.3.6"
+  }
+}
