@@ -3,8 +3,8 @@
 Node-RED nodes for the public Sekalum Consumer API. Maintained by Working
 Curiosity.
 
-The package provides two operation modes: **Discover** and **Resolve**. It is
-published as `@workingcuriosity/node-red-sekalum`.
+The package provides two operation modes: **Discover** and **Resolve**. Its npm
+package name is `@workingcuriosity/node-red-sekalum`.
 
 ## Prerequisites
 
